@@ -1,7 +1,11 @@
 trigger ContactTrigger on Contact (before insert) {
-    for (Contact con : Trigger.new) {
-        if (String.isBlank(con.LastName)) {
-            con.LastName = 'Domyślne Nazwisko';
+    ContactTriggeerHandler handler = new ContactTriggerHandler();
+    if (Trigger.isBefore) {
+        if(Trigger.isInsert) {
+            handler.beforeInsert(Trigger.New);
+        }
+        if(Trigger.isUpdate) {
+            handler.beforeUpdate(Trigger.New, Trigger.oldMap);
         }
     }
 }
