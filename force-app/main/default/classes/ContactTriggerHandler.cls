@@ -1,7 +1,7 @@
 public with sharing class ContactTriggerHandler {
     
     public void beforeInsert(List<Contact> newContacts) {
-        for (Contact con : Trigger.new) {
+        for (Contact con : newContacts) {
             if (String.isBlank(con.LastName)) {
                     con.LastName = 'Domyślne Nazwisko';
             }
