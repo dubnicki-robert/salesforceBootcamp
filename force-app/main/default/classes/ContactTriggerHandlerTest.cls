@@ -2,22 +2,21 @@
 private class ContactTriggerHandlerTest {
     @isTest
     static void testInsertWithBlankLastName() {
-        Contact c = new Contact(FirstName='Abigail', LastName='null');
+        Contact c = new Contact(FirstName='Abigail', LastName='');
         insert c;
-
         Contact insertedContact = [SELECT LastName FROM Contact WHERE Id =:c.Id];
         System.assertEquals('Domyślne Nazwisko', insertedContact.LastName);
     }
 
     @isTest
-    static void testUpdateWithBlankLastName() {
+    static void testUpdateWithBlankPhoneNumber() {
         Contact c = new Contact(FirstName='Maria', LastName='De Medeiros');
         insert c;
-
-        c.LastName = 'null';
+        c.Phone = null;
+        Test.startTest();
         update c;
-
-        Contact updatedContact = [SELECT LastName FROM Contact WHERE Id =:c.Id];
-        System.assertEquals('Domyślne Nazwisko', updatedContact.LastName);
+        Test.stopTest();
+        Contact updatedContact = [SELECT Phone FROM Contact WHERE Id =:c.Id];
+        System.assertEquals('666-666-666', updatedContact.Phone);
     }
 }
