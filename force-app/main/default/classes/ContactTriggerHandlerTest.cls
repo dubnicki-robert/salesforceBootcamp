@@ -1,5 +1,5 @@
 @isTest
-private class ContactTriggerHandler {
+private class ContactTriggerHandlerTest {
     @isTest
     static void testInsertWithBlankLastName() {
         Contact c = new Contact(FirstName='Abigail', LastName='null');
