@@ -1,4 +1,4 @@
-trigger ContactTrigger on Contact (before insert) {
+trigger ContactTrigger on Contact (before insert, before update) {
     ContactTriggerHandler handler = new ContactTriggerHandler();
     if (Trigger.isBefore) {
         if(Trigger.isInsert) {

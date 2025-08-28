@@ -10,8 +10,8 @@ public with sharing class ContactTriggerHandler {
 
     public void beforeUpdate(List<Contact> newContacts, Map<Id, Contact> oldContactMap) {
         for (Contact con : newContacts) {
-            if (con.Phone == null) {
-                con.Phone = '666-666-666';
+            if (String.isBlank(con.Phone)) {
+                con.Phone = '000-000-000';
             }
         }
 

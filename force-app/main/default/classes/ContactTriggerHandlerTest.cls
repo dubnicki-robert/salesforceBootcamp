@@ -12,11 +12,11 @@ private class ContactTriggerHandlerTest {
     static void testUpdateWithBlankPhoneNumber() {
         Contact c = new Contact(FirstName='Maria', LastName='De Medeiros');
         insert c;
-        c.Phone = null;
+        c.Phone = '';
         Test.startTest();
         update c;
         Test.stopTest();
         Contact updatedContact = [SELECT Phone FROM Contact WHERE Id =:c.Id];
-        System.assertEquals('666-666-666', updatedContact.Phone);
+        System.assertEquals('000-000-000', updatedContact.Phone);
     }
 }
